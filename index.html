@@ -1,1 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>OrlandoHalal | Find Halal Food in Orlando</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #111827;
+        }
+
+        /* HEADER */
+        header {
+            width: 100%;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eeeeee;
+            background: white;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #111827;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .logo img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #0b5cad;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            background: #f7faff;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 76px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #6b7280;
+            margin-bottom: 35px;
+        }
+
+        /* SEARCH */
+        .search-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 7px;
+            display: flex;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 17px 18px;
+            font-size: 16px;
+        }
+
+        .search-box button {
+            border: none;
+            background: #0b5cad;
+            color: white;
+            padding: 0 28px;
+            border-radius: 13px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .near-me {
+            margin-top: 18px;
+            border: none;
+            background: transparent;
+            color: #0b5cad;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* SECTION */
+        section {
+            padding: 70px 6%;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 30px;
+            letter-spacing: -1px;
+        }
+
+        /* CATEGORIES */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 14px;
+        }
+
+        .category {
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 20px 10px;
+            text-align: center;
+            background: white;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .category:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+        }
+
+        .category .icon {
+            font-size: 28px;
+            margin-bottom: 9px;
+        }
+
+        .category span {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* MAP */
+        .map-preview {
+            height: 430px;
+            border-radius: 24px;
+            background: #eef3f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #6b7280;
+            border: 1px solid #e5e7eb;
+        }
+
+        .map-preview h3 {
+            color: #374151;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* RESTAURANT CARDS */
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .restaurant-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .restaurant-image {
+            height: 210px;
+            background: #e5e7eb;
+        }
+
+        .restaurant-info {
+            padding: 20px;
+        }
+
+        .restaurant-info h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .restaurant-info p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        /* AD */
+        .ad {
+            max-width: 1000px;
+            height: 180px;
+            margin: 20px auto;
+            border: 1px dashed #cbd5e1;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 50px 6%;
+            background: #111827;
+            color: white;
+            text-align: center;
+        }
+
+        footer img {
+            width: 75px;
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+            nav {
+                display: none;
+            }
+
+            .categories {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .restaurant-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 12px 20px;
+            }
+
+            .hero {
+                min-height: 500px;
+                padding: 50px 20px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .search-box {
+                flex-direction: column;
+                border-radius: 16px;
+            }
+
+            .search-box button {
+                height: 50px;
+            }
+
+            section {
+                padding: 50px 20px;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-preview {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+
+        <a href="#" class="logo">
+            <img src="orlandohalallogo.jpeg" alt="OrlandoHalal">
+            <span>OrlandoHalal</span>
+        </a>
+
+        <nav>
+            <a href="#">Restaurants</a>
+            <a href="#">Map</a>
+            <a href="#">Categories</a>
+            <a href="#">About</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <h1>Find Your Next<br>Halal Favorite.</h1>
+
+            <p>Discover halal restaurants, coffee spots, groceries and more in Orlando.</p>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    placeholder="Search restaurants, food, or area..."
+                >
+
+                <button>Search</button>
+
+            </div>
+
+            <button class="near-me">
+                📍 Explore Near Me
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CATEGORIES -->
+    <section>
+
+        <div class="section-title">
+            <h2>Explore Categories</h2>
+        </div>
+
+        <div class="categories">
+
+            <div class="category">
+                <div class="icon">🍔</div>
+                <span>Burgers</span>
+            </div>
+
+            <div class="category">
+                <div class="icon">🍗</div>
+                <span>Chicken</span>
+            </div>
+
+            <div class="category">
+                <div class="icon">🥘</div>
+                <span>Mediterranean</span>
+            </div>
+
+            <div class="category">
+                <div class="icon">🇹🇷</div>
+                <span>Turkish</span>
+            </div>
+
+            <div class="category">
+                <div class="icon">☕</div>
+                <span>Coffee</span>
+            </div>
+
+            <div class="category">
+                <div class="icon">🍳</div>
+                <span>Breakfast</span>
+            </div>
+
+            <div class="category">
+                <div class="icon">🌙</div>
+                <span>Late Night</span>
+            </div>
+
+            <div class="category">
+                <div class="icon">🛒</div>
+                <span>Grocery</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAP -->
+    <section>
+
+        <div class="section-title">
+            <h2>Explore Halal Spots</h2>
+        </div>
+
+        <div class="map-preview">
+
+            <div>
+                <h3>Interactive Halal Map</h3>
+                <p>Find halal restaurants and food spots around Orlando.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TRENDING -->
+    <section>
+
+        <div class="section-title">
+            <h2>🔥 Trending Now</h2>
+        </div>
+
+        <div class="restaurant-grid">
+
+            <div class="restaurant-card">
+                <div class="restaurant-image"></div>
+
+                <div class="restaurant-info">
+                    <h3>Restaurant Name</h3>
+                    <p>🍔 Burgers · 📍 Orlando</p>
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-image"></div>
+
+                <div class="restaurant-info">
+                    <h3>Restaurant Name</h3>
+                    <p>🍗 Chicken · 📍 Orlando</p>
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-image"></div>
+
+                <div class="restaurant-info">
+                    <h3>Restaurant Name</h3>
+                    <p>☕ Coffee · 📍 Orlando</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADVERTISEMENT -->
+    <section>
+
+        <div class="ad">
+            ADVERTISEMENT
+        </div>
+
+    </section>
+
+
+    <!-- NEW IN ORLANDO -->
+    <section>
+
+        <div class="section-title">
+            <h2>🆕 New in Orlando</h2>
+        </div>
+
+        <div class="restaurant-grid">
+
+            <div class="restaurant-card">
+                <div class="restaurant-image"></div>
+
+                <div class="restaurant-info">
+                    <h3>New Halal Spot</h3>
+                    <p>📍 Orlando</p>
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-image"></div>
+
+                <div class="restaurant-info">
+                    <h3>New Halal Spot</h3>
+                    <p>📍 Kissimmee</p>
+                </div>
+            </div>
+
+            <div class="restaurant-card">
+                <div class="restaurant-image"></div>
+
+                <div class="restaurant-info">
+                    <h3>New Halal Spot</h3>
+                    <p>📍 Sanford</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <img src="orlandohalallogo.jpeg" alt="OrlandoHalal">
+
+        <p>Orlando's guide to halal food.</p>
+
+        <br>
+
+        <p>© 2026 OrlandoHalal</p>
+
+    </footer>
+
+</body>
+</html>
